@@ -4,10 +4,10 @@
 npm install -g express-generator 
 // install express-generator globally 
 
-express --ejs -f 
+*express --ejs -f 
 //generate express with ejs engine and force the install
 
-npm install 
+*npm install 
 //install the dependency in package.jason
 
 bin/www
