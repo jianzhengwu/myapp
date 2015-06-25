@@ -23,3 +23,6 @@
 
 `username: jianzhengwu  ; password: banjiwujing`
 
+To ignore node_modules folder from git, one can use .gitignore or exclude in .git/info/ignore
+
+
