@@ -1,6 +1,6 @@
 # myapp 
 ## Environment configuration
-`npm install -g express-generator --save` 
+`npm install -g express-generator` 
 // install express-generator globally 
 
 `express --ejs -f` 
