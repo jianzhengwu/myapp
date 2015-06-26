@@ -31,17 +31,18 @@ router.route('/posts')
 //api for a specfic post
 router.route('/posts/:id')
 
-    //create
-    .put(function(req,res){
-        return res.send({message:'TODO modify an existing post by using param ' + req.param.id});
-    })
+	//create
+	.put(function(req,res){
+		return res.send({message:'TODO modify an existing post by using param ' + req.params.id});
+	})
 
-    .get(function(req,res){
-        return res.send({message:'TODO get an existing post by using param ' + req.param.id});
-    })
+	.get(function(req,res){
+		return res.send({message:'TODO get an existing post by using param ' + req.params.id});
+	})
 
-    .delete(function(req,res){
-        return res.send({message:'TODO delete an existing post by using param ' + req.param.id})
-    });
+	.delete(function(req,res){
+		return res.send({message:'TODO delete an existing post by using param ' + req.params.id})
+	});
+
     
 module.exports = router;

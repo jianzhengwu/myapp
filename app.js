@@ -4,6 +4,8 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session = require('express-session'); //session middleware
+var passport = require('passport');
 
 //var routes = require('./routes/index');
 //var users = require('./routes/users');
@@ -18,17 +20,30 @@ app.set('view engine', 'ejs');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
+
+//Middleware section begin
+
 app.use(logger('dev'));
+app.use(session({
+  secret:'keyboard cat'
+}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+//Middleware section end
+
+//Route handler section begin
 
 //app.use('/', routes);
 //app.use('/users', users);
 //we assigned express to use the api router at /api all routes in this file will have the prefix ''/api'
 app.use('/api', api); 
 //app.use('/auth', authenticate);
+
+//Route handler end
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
