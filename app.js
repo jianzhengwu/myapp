@@ -10,7 +10,7 @@ var passport = require('passport');
 //var routes = require('./routes/index');
 //var users = require('./routes/users');
 var api = require('./routes/api');
-//var authenticate = require('./routes/authenticate');
+var authenticate = require('./routes/authenticate')(passport);
 
 var app = express();
 
@@ -23,24 +23,35 @@ app.set('view engine', 'ejs');
 
 //Middleware section begin
 
+//the order of the middlewares matters, the middleware will be run one by one with the order before the transaction reaches the route handler below.
+
 app.use(logger('dev'));
 app.use(session({
-  secret:'keyboard cat'
+  secret:'asdfasdfasdf', //you have to put sth here, Express will use this to hash the session
+  resave: false,
+  saveUninitialized: false
 }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(passport.initialize());
+app.use(passport.session());
 
 //Middleware section end
+
+// Initialize Passport
+var initPassport = require('./passport-init');
+initPassport(passport); 
+
 
 //Route handler section begin
 
 //app.use('/', routes);
 //app.use('/users', users);
 //we assigned express to use the api router at /api all routes in this file will have the prefix ''/api'
-app.use('/api', api); 
-//app.use('/auth', authenticate);
+app.use('/api', api); //the second argument is supposed to be a router object (see api.js)
+app.use('/auth', authenticate);
 
 //Route handler end
 

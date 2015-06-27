@@ -2,6 +2,15 @@ var express = require('express');
 var router = express.Router();
 
 /* route middleware*/
+//route middlewares apply only for route, so we do router.use
+router.use(function(req, res, next){
+    //next is a function which leads to the next middleware (reason the order of middleware is important) or to the route handler
+    if (req.method==='GET')
+        return next(); //allow get request for all
+    if(req.isAuthenticated())
+        return next(); //allow get, post and other methods for authenticated users
+    return res.redirect('/#login') //deny access and send requester to the login page
+});
 
 //api for all post
 router.route('/posts')
