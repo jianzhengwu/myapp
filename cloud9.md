@@ -11,3 +11,5 @@ In the run panel fill in Express as name, bin/www as the command and Node 0.10.x
 clicking Set As Default. 
 
 If you do so then clicking the run button will always run the app and not the currently opened file.
+
+Setting up Mongodb in cloud9:https://docs.c9.io/v1.0/docs/setting-up-mongodb
