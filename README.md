@@ -8,7 +8,6 @@
 
 `npm install` 
 //install the dependency in package.jason
-
 `bin/www`
 // to lauch the server, type bin/www in the terminal and use Preview/Preview running application to see result
 
