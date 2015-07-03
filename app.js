@@ -8,7 +8,7 @@ var session = require('express-session'); //session middleware
 var passport = require('passport');
 //initialize mongoose schemas
 require('./models/models');
-//var routes = require('./routes/index');
+var index = require('./routes/index');
 //var users = require('./routes/users');
 var api = require('./routes/api');
 var authenticate = require('./routes/authenticate')(passport);
@@ -18,7 +18,7 @@ mongoose.connect('mongodb://localhost/test-chirp');
 var app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'views')); 
 app.set('view engine', 'ejs');
 
 // uncomment after placing your favicon in /public
@@ -50,9 +50,10 @@ initPassport(passport);
 
 //Route handler section begin
 
-//app.use('/', routes);
+
 //app.use('/users', users);
 //we assigned express to use the api router at /api all routes in this file will have the prefix ''/api'
+app.use('/', index);
 app.use('/api', api); //the second argument is supposed to be a router object (see api.js)
 app.use('/auth', authenticate);
 
