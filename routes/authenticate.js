@@ -17,13 +17,13 @@ module.exports = function(passport){
         res.send({state: 'failure', user: null, message: "Invalid username or password"});
     });
 
-    //log in
+    //log in/ Use passport.authenticate(), specifying the 'local' strategy, to authenticate requests.
     router.post('/login', passport.authenticate('login', {
         successRedirect: '/auth/success',
         failureRedirect: '/auth/failure'
     }));
 
-    //sign up
+    //sign up 
     router.post('/signup', passport.authenticate('signup', {
         successRedirect: '/auth/success',
         failureRedirect: '/auth/failure'
