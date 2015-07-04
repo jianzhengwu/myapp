@@ -24,4 +24,10 @@
 
 To ignore node_modules folder from git, one can use .gitignore or exclude in .git/info/ignore
 
+Updating NPM:
+$ npm update -g npm
+Updating Grunt:
+$ npm update -g grunt-cli
+Updating Bower:
+$ npm update -g bower
 
